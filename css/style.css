@@ -1,0 +1,157 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body,ul,li,p {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
+    height: 90vh;
+    margin-top: 5vh;
+    padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.header {
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-weight: bold;
+    font-family: monospace, sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.add-area {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.add-area input {
+    width: 95%;
+    border: 0;
+    border-bottom: 2px solid #EEE;
+    font-size: 18px;
+}
+
+.add-area input:focus, .add-area button {
+    outline: none;
+}
+
+.add-area button {
+    background-color: green;
+    color: #FFF;
+    border: 2px solid green;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    font-size: 24px;
+    border-radius: 50%;
+    transition: all .3s;
+    line-height: 10px;
+}
+
+.add-area button:hover {
+    border: 1px solid green;
+    color: green;
+    background-color: #FFF;
+}
+
+img {
+    width: 12px;
+}
+
+.title img {
+    width: 25px;
+    margin-right: 10px;
+}
+
+.tasks > .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #EEE;
+} 
+
+.task {
+    display: flex;
+}
+
+.loading {
+    width: 15px;
+    height: 15px;
+    border: 5px solid #87e;
+    border-radius: 50%;
+    border-top-color: rgb(45, 11, 241);
+    animation: circle 1s linear infinite;
+}
+
+@keyframes circle {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+p.checked {
+    text-decoration: line-through;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-top: 2px solid #DDD;
+    padding: 10px;
+    background-color: #FFF;
+    width: 100%;
+    text-align: center;
+}
+
+.pending-text {
+    color: red;
+    font-weight: bold;
+}
+
+.completed-text {
+    color: green;
+    font-weight: bold;
+}
+
+.modal-bg {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+}
+
+.modal-content {
+    width: 500px;
+    background-color: #FFF;
+    margin: 20px auto;
+    border-radius: 4px;
+    padding: 20px
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+}

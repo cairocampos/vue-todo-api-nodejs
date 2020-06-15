@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJs - Todo List</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="header">
+                <div class="title"><img src="./icons/lista-de-verificacao.svg" alt=""> VueJS - Todo List</div>
+                <div class="loading" v-if="loading"></div>
+            </div>
+            <div class="add-area">
+                <input type="text" @keyup.enter="addTask" v-model="newTask" placeholder="Nova tarefa...">
+                <button @click="addTask">+</button>
+            </div>
+            <div class="tasks">
+                <template v-if="tasks.length">
+                <div class="item" v-for="(task, index) in tasks" :key="task.id">
+                    <div class="task">
+                        <input @click="verifyTask(task.id, index)" type="checkbox" :checked="task.status">
+                        <p :class="{checked:task.status}">{{task.title}}</p>
+                    </div>
+                    <div class="actions">
+                        <button @click="showModalEdit(task)"><img src="./icons/editar.svg"></button>
+                        <button @click="deleteTask(task.id, index)"><img src="./icons/excluir.svg"></button>
+                    </div>
+                </div>
+                </template>
+                <template v-else>
+                    <p class="no-task">
+                        Nenhum tarefa adicionada!
+                    </p>
+                </template>
+            </div>
+            <div class="footer">
+                <div style="text-align: center;">
+                    <small class="pending-text">Pendente: {{report.pending}}</small>
+                    <small class="completed-text">Concluído: {{report.completed}}</small>
+                </div>
+                <small v-if="report.pending === 0 && report.completed > 0">
+                    Parabéns, todas as tarefas foram concluídas!
+                </small>
+            </div>
+        </div>
+        <modal :task="task" v-on:reset="updateElement" v-if="Object.keys(task).length > 0"/>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>
